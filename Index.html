@@ -15,15 +15,17 @@
         </style>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="js/test.js" defer></script>
+        <script src="js/data_type.js"></script>
+        <script src="js/pop_up.js" defer></script>
     </head>
 
-    <body style="background-color:black;">
+    <body style="background-color:black;" onload="pop_up();">
         <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
             <div class="container-fluid">
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="#">
-                            <img src="image/LOGO.jpg" alt="Logo" width="200" height="60" class="d-inline-block align-text-top">
+                            <img src="image/LOGO.jpg" alt="Logo" width="200" height="60" class="d-inline-block align-text-top" onmouseover="over(this)" onmouseout="out(this)">
                         </a>
                     </div>
                 </nav>
@@ -63,8 +65,8 @@
                 <nav class="navbar bg-body-tertiary">
                     <div class="container-fluid">
                         <a class="navbar-brand">게임정보</a>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="키워드 입력" aria-label="Search">
+                        <form class="d-flex" role="search" onsubmit="return googleSearch();">
+                            <input class="form-control me-2" id="search_input" name="q" type="search" placeholder="키워드 입력" aria-label="Search">
                             <button class="btn btn-outline-success" id="search_btn" type="submit">검색하기</button>
                         </form>
                     </div>
@@ -82,7 +84,7 @@
 
         <div style="display: flex; justify-content: center;">
         <a href="index.html" target="blank">
-            <img src="image/MAIN.jpg" class="image-fluid" max-width="1200"  height="768">
+            <img src="image/MAIN.jpg" class="image-fluid" width="1200"  height="768">
         </a>
         </div>
         <div style="display: flex; justify-content: center;">
