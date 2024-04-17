@@ -25,10 +25,17 @@ function show_clock(){
     setTimeout(show_clock, 1000); //1초마다 갱신
 }
 
-function over(obj) {
+const over = (obj) => {
+    obj.src = "../image/LOGO.jpg";
+};
+
+const out = (obj) => {
+    obj.src = "../image/LOGO_2.jpg";
+};
+/*function over(obj) {
     obj.src="image/LOGO.jpg";
 }
 
 function out(obj) {
     obj.src="image/LOGO_2.jpg";
-}
+}*/
