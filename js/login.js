@@ -114,14 +114,28 @@ function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
     }
 }
 
-function login_count(){
-    let loginCnt = getCookie("login_cnt");
-    loginCnt++;
-    setCookie("login_cnt", loginCnt.value, 1);
-    alert('로그인카운트');
+function login_count() {
+    let loginCnt = parseInt(getCookie("login_cnt")) || 0; // 쿠키 값을 가져와서 정수로 변환
+    loginCnt = loginCnt + 1; // 카운트 증가
+    setCookie("login_cnt", loginCnt, 1); // 쿠키에 저장
+    alert('로그인 카운트: ' + loginCnt); // 카운트 알림
+}
+
+function login_failed() {
+    let failCount = parseInt(getCookie("login_fail_count")) || 0; // 로그인 실패 횟수 쿠키 값 가져오기, 없으면 0
+    failCount++; // 실패 횟수 증가
+    setCookie("login_fail_count", failCount, 1); // 쿠키에 실패 횟수 저장
+
+    if (failCount >= 3) {
+        alert("로그인 시도가 3번 이상 실패했습니다. 로그인이 제한됩니다.");
+        document.getElementById("login_btn").disabled = true; // 로그인 버튼 비활성화
+    } else {
+        alert("로그인 실패 횟수: " + failCount);
+    }
 }
 
 document.getElementById("login_btn").addEventListener('click', function(){
     check_input();
     login_count();
+    login_failed();
 });

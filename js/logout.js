@@ -28,11 +28,11 @@ function getCookie(name){
     return;
 }
 
-function logout_count(){
-    let logoutCnt = getCookie("logout_cnt");
-    logoutCnt++;
-    setCookie("logout_cnt", logoutCnt.value, 1);
-    alert('로그아웃카운트');
+function logout_count() {
+    let logoutCnt = parseInt(getCookie("logout_cnt")) || 0; // 쿠키 값을 가져와서 정수로 변환
+    logoutCnt++; // 카운트 증가
+    setCookie("logout_cnt", logoutCnt, 1); // 쿠키에 저장
+    alert('로그아웃 카운트: ' + logoutCnt); // 카운트 알림
 }
 
 document.getElementById("logout_btn").addEventListener('click', function(){
