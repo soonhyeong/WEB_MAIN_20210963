@@ -1,7 +1,7 @@
 function session_del() {//세션 삭제
     if (sessionStorage) {
-        sessionStorage.removeItem("Session_Storage_id");
-        sessionStorage.removeItem("Session_Storage_pass");
+        sessionStorage.removeItem("Session_Storage_object");
+        sessionStorage.removeItem("Session_Storage_encrypted");
         alert('로그아웃 버튼 클릭 확인 : 세션 스토리지 및 쿠키를 삭제합니다.');
     }
     else{
