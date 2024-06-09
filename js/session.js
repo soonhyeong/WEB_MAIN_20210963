@@ -42,7 +42,7 @@ function session_get() {//세션 읽기
 }
 
 function session_check() {//세션 검사
-    if(sessionStorage.getItem("Session_Storage_id")){
+    if(sessionStorage.getItem("Session_Storage_object")){
         alert("이미 로그인 되었습니다.");
         location.href=`../login/index_login.html`;// 로그인된 페이지로 이동
     }
@@ -76,6 +76,36 @@ function session_join_get() {
         let userData = sessionStorage.getItem("Session_Storage_new_user");
         console.log(userData);
         return userData;
+    }
+    else {
+        alert("세션 스토리지 지원 x");
+    }
+}
+
+function session_profile_check() {
+    if (sessionStorage) {
+        let storedUser = sessionStorage.getItem("Session_Storage_object");
+        if (storedUser) {
+            let storedUserObj = JSON.parse(storedUser);
+            let emailInput = document.querySelector("#email");
+
+            if (emailInput) {
+                let email = emailInput.value;
+            
+                if (storedUserObj.id === email) {
+                    console.log("사용자가 일치합니다.");
+                    alert("사용자가 일치합니다.");
+                }
+                else {
+                    console.log("사용자가 일치하지 않습니다.");
+                    alert("사용자가 일치하지 않습니다. 로그아웃됩니다.");
+                    location.href = `../index.html`;
+                }
+            }
+        }
+        else {
+            alert("사용자 정보가 없습니다.");
+        }
     }
     else {
         alert("세션 스토리지 지원 x");
